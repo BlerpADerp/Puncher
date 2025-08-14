@@ -25,8 +25,54 @@
 			"bones": {
 				"root_item": {
 					"position": {
-						"0.0": [0, 1, 0],
-						"0.5": [0, 25, 0]
+						"0.0": [0, 1, 0], 
+						"punch": {
+  "animations": ["animations/puncher.animation.json"],
+  "on_exit": [
+    "/execute @s[query.is_swinging && query.rotation_pitch>75] ~ ~ ~ tp @s ~ 10 ~"
+  ],
+  "transitions": [
+    { "retract": "query.animation_time('animations/puncher.animation.json') > 0.9" }
+  ]
+}
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.puncher": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": [],
+          "transitions": [
+            {
+              "punch": "query.is_swinging"
+            }
+          ]
+        },
+        "punch": {
+          "animations": ["animations/puncher.animation.json"],
+          "on_exit": [
+            "/execute @s[query.rotation_pitch>75] ~ ~ ~ tp @s ~ 10 ~"
+          ],
+          "transitions": [
+            {
+              "retract": "query.animation_time('animations/puncher.animation.json') > 0.9"
+            }
+          ]
+        },
+        "retract": {
+          "animations": ["animations/puncher_retract.animation.json"],
+          "transitions": [
+            {
+              "idle": "!query.is_swinging"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+
 					}
 				},
 				"Spring": {
