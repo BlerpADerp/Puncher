@@ -1,0 +1,25 @@
+{
+  "format_version": "1.20.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "myaddon:puncher",
+      "category": "Tools",
+      "is_experimental": false
+    },
+    "components": {
+      "minecraft:icon": "textures/items/Puncher.geo.json",
+      "minecraft:use_duration": 1,
+      "minecraft:hand_equipped": true,
+      "minecraft:render_offsets": "tool"
+    },
+    "events": {},
+    "minecraft:client_item": {
+      "render_controllers": [
+        "controller.render.puncher"
+      ],
+      "animation_controllers": {
+        "controller.animation.puncher": "controller.animation.puncher"
+      }
+    }
+  }
+}
