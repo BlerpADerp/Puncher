@@ -1,0 +1,17 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Puncher Behavior Pack",
+    "description": "Item definitions, hitboxes, and events for the Puncher glove.",
+    "uuid": "f7cf9b31-a7aa-43a4-bbdb-3584d73b23ff",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 20, 0]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "353df076-c911-4900-905d-333eacfc180f",
+      "version": [1, 0, 0]
+    }
+  ]
+}
