@@ -226,6 +226,35 @@
 					]
 				}
 			]
+			{
+  "format_version": "1.12",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.puncher",
+        "texture_width": 64,
+        "texture_height": 64
+      },
+      "bones": [
+        {
+          "name": "main",
+          "pivot": [0, 24, 0],
+          "cubes": [
+            {
+              "origin": [-1, -1, -1],
+              "size": [2, 2, 2],
+              "uv": [0, 0]
+            }
+          ]
+        }
+      ],
+      "textures": {
+        "default": "textures/items/Puncher.texture.png"
+      }
+    }
+  ]
+}
+
 		}
 	]
 }
