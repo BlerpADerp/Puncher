@@ -1,0 +1,40 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.C:D",
+				"texture_width": 16,
+				"texture_height": 16
+			}
+		}
+	]
+}
+
+{
+  "format_version": "1.20.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "myaddon:glove_hitbox",
+      "is_spawnable": false,
+      "collision_box": { "width": 1, "height": 1 }
+    },
+    "components": {
+      "minecraft:collision": true,
+      "minecraft:physics": false,
+      "minecraft:render": "invisible",
+      "minecraft:health": { "value": 1 },
+      "minecraft:on_collide_entity": { "event": "glove_hit_event" }
+    },
+    "events": {
+      "glove_hit_event": {
+        "run_command": {
+          "command": [
+            "effect @e[type=!player,distance=..3] instant_damage 5",
+            "execute @s ~ ~ ~ tp @s ^ ^1 ^"
+          ]
+        }
+      }
+    }
+  }
+}
