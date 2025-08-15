@@ -38,3 +38,42 @@
     }
   }
 }
+{
+  "format_version": "1.20.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "myaddon:glove_hitbox",
+      "is_spawnable": false,
+      "collision_box": { "width": 0.5, "height": 0.5 }
+    },
+    "components": {
+      "minecraft:collision": true,
+      "minecraft:physics": false,
+      "minecraft:render": "invisible",
+      "minecraft:health": { "value": 1 },
+      "minecraft:on_collide_entity": { "event": "glove_hit_event" },
+      "minecraft:on_collide_block": { "event": "glove_block_event" }
+    },
+    "events": {
+      "glove_hit_event": {
+        "run_command": {
+          "command": [
+            "damage @e[distance=..3] 5 entity_attack",
+            "execute @s ~ ~ ~ tp @s ^ ^1 ^"
+          ]
+        }
+      },
+      "glove_block_event": {
+        "run_command": {
+          "command": [
+            "execute @s ~ ~ ~ particle minecraft:explosion_particle ~ ~ ~",
+            "execute @s ~ ~ ~ playsound dig.stone @a ~ ~ ~ 1 1 0",
+            "fill ^ ^ ^ ^ ^ ^ air replace stone",
+            "fill ^ ^ ^ ^ ^ ^ air replace dirt",
+            "fill ^ ^ ^ ^ ^ ^ air replace glass"
+          ]
+        }
+      }
+    }
+  }
+}
