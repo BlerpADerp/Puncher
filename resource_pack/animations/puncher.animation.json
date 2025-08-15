@@ -1,5 +1,41 @@
 {
 	"format_version": "1.8.0",
+	{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.puncher": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": [],
+          "transitions": [
+            { "punch": "query.is_swinging" }
+          ]
+        },
+        "punch": {
+          "animations": ["animations/puncher.animation.json"],
+          "on_entry": [
+            "summon myaddon:glove_hitbox ~ ~1 ~ {Tags:[\"punching\"]}"
+          ],
+          "on_exit": [
+            "/execute @s[query.rotation_pitch>75] ~ ~ ~ tp @s ~ 10 ~",
+            "kill @e[tag=punching,type=myaddon:glove_hitbox]"
+          ],
+          "transitions": [
+            { "retract": "query.animation_time('animations/puncher.animation.json') > 0.9" }
+          ]
+        },
+        "retract": {
+          "animations": ["animations/puncher_retract.animation.json"],
+          "transitions": [
+            { "idle": "!query.is_swinging" }
+          ]
+        }
+      }
+    }
+  }
+}
+
 	"animations": {
 		"animation.puncher.first_person_hold": {
 			"loop": true,
